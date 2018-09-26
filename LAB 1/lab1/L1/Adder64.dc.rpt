@@ -1,0 +1,183 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Adder64
+Version: M-2016.12-SP5
+Date   : Mon Sep 10 13:44:28 2018
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B[0] (input port)
+  Endpoint: sum[63] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Adder64            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  B[0] (in)                                0.00       0.00 f
+  intadd_0/U65/CO (FA_X1)                  0.10       0.10 f
+  intadd_0/U64/CO (FA_X1)                  0.09       0.19 f
+  intadd_0/U63/CO (FA_X1)                  0.09       0.28 f
+  intadd_0/U62/CO (FA_X1)                  0.09       0.37 f
+  intadd_0/U61/CO (FA_X1)                  0.09       0.46 f
+  intadd_0/U60/CO (FA_X1)                  0.09       0.55 f
+  intadd_0/U59/CO (FA_X1)                  0.09       0.64 f
+  intadd_0/U58/CO (FA_X1)                  0.09       0.73 f
+  intadd_0/U57/CO (FA_X1)                  0.09       0.82 f
+  intadd_0/U56/CO (FA_X1)                  0.09       0.91 f
+  intadd_0/U55/CO (FA_X1)                  0.09       1.00 f
+  intadd_0/U54/CO (FA_X1)                  0.09       1.10 f
+  intadd_0/U53/CO (FA_X1)                  0.09       1.19 f
+  intadd_0/U52/CO (FA_X1)                  0.09       1.28 f
+  intadd_0/U51/CO (FA_X1)                  0.09       1.37 f
+  intadd_0/U50/CO (FA_X1)                  0.09       1.46 f
+  intadd_0/U49/CO (FA_X1)                  0.09       1.55 f
+  intadd_0/U48/CO (FA_X1)                  0.09       1.64 f
+  intadd_0/U47/CO (FA_X1)                  0.09       1.73 f
+  intadd_0/U46/CO (FA_X1)                  0.09       1.82 f
+  intadd_0/U45/CO (FA_X1)                  0.09       1.91 f
+  intadd_0/U44/CO (FA_X1)                  0.09       2.00 f
+  intadd_0/U43/CO (FA_X1)                  0.09       2.09 f
+  intadd_0/U42/CO (FA_X1)                  0.09       2.18 f
+  intadd_0/U41/CO (FA_X1)                  0.09       2.27 f
+  intadd_0/U40/CO (FA_X1)                  0.09       2.36 f
+  intadd_0/U39/CO (FA_X1)                  0.09       2.45 f
+  intadd_0/U38/CO (FA_X1)                  0.09       2.55 f
+  intadd_0/U37/CO (FA_X1)                  0.09       2.64 f
+  intadd_0/U36/CO (FA_X1)                  0.09       2.73 f
+  intadd_0/U35/CO (FA_X1)                  0.09       2.82 f
+  intadd_0/U34/CO (FA_X1)                  0.09       2.91 f
+  intadd_0/U33/CO (FA_X1)                  0.09       3.00 f
+  intadd_0/U32/CO (FA_X1)                  0.09       3.09 f
+  intadd_0/U31/CO (FA_X1)                  0.09       3.18 f
+  intadd_0/U30/CO (FA_X1)                  0.09       3.27 f
+  intadd_0/U29/CO (FA_X1)                  0.09       3.36 f
+  intadd_0/U28/CO (FA_X1)                  0.09       3.45 f
+  intadd_0/U27/CO (FA_X1)                  0.09       3.54 f
+  intadd_0/U26/CO (FA_X1)                  0.09       3.63 f
+  intadd_0/U25/CO (FA_X1)                  0.09       3.72 f
+  intadd_0/U24/CO (FA_X1)                  0.09       3.81 f
+  intadd_0/U23/CO (FA_X1)                  0.09       3.91 f
+  intadd_0/U22/CO (FA_X1)                  0.09       4.00 f
+  intadd_0/U21/CO (FA_X1)                  0.09       4.09 f
+  intadd_0/U20/CO (FA_X1)                  0.09       4.18 f
+  intadd_0/U19/CO (FA_X1)                  0.09       4.27 f
+  intadd_0/U18/CO (FA_X1)                  0.09       4.36 f
+  intadd_0/U17/CO (FA_X1)                  0.09       4.45 f
+  intadd_0/U16/CO (FA_X1)                  0.09       4.54 f
+  intadd_0/U15/CO (FA_X1)                  0.09       4.63 f
+  intadd_0/U14/CO (FA_X1)                  0.09       4.72 f
+  intadd_0/U13/CO (FA_X1)                  0.09       4.81 f
+  intadd_0/U12/CO (FA_X1)                  0.09       4.90 f
+  intadd_0/U11/CO (FA_X1)                  0.09       4.99 f
+  intadd_0/U10/CO (FA_X1)                  0.09       5.08 f
+  intadd_0/U9/CO (FA_X1)                   0.09       5.17 f
+  intadd_0/U8/CO (FA_X1)                   0.09       5.26 f
+  intadd_0/U7/CO (FA_X1)                   0.09       5.36 f
+  intadd_0/U6/CO (FA_X1)                   0.09       5.45 f
+  intadd_0/U5/CO (FA_X1)                   0.09       5.54 f
+  intadd_0/U4/CO (FA_X1)                   0.09       5.63 f
+  intadd_0/U3/CO (FA_X1)                   0.09       5.72 f
+  intadd_0/U2/S (FA_X1)                    0.13       5.84 r
+  sum[63] (out)                            0.00       5.85 r
+  data arrival time                                   5.85
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+ 
+****************************************
+Report : area
+Design : Adder64
+Version: M-2016.12-SP5
+Date   : Mon Sep 10 13:44:28 2018
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /tools/library/Nangate45/NG45nm.db)
+
+Number of ports:                          194
+Number of nets:                           257
+Number of cells:                           64
+Number of combinational cells:             64
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                          0
+Number of references:                       1
+
+Combinational area:                272.384003
+Buf/Inv area:                        0.000000
+Noncombinational area:               0.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                   272.384003
+Total area:                 undefined
+1
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : Adder64
+Version: M-2016.12-SP5
+Date   : Mon Sep 10 13:44:28 2018
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /tools/library/Nangate45/NG45nm.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Adder64                5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 228.1951 uW   (82%)
+  Net Switching Power  =  49.1121 uW   (18%)
+                         ---------
+Total Dynamic Power    = 277.3072 uW  (100%)
+
+Cell Leakage Power     =   4.8474 uW
+
+Information: report_power power group summary does not include estimated clock tree power. (PWR-789)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational    228.1951           49.1121        4.8474e+03          282.1547  ( 100.00%)
+--------------------------------------------------------------------------------------------------
+Total            228.1951 uW        49.1121 uW     4.8474e+03 nW       282.1547 uW
+1
