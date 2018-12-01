@@ -21,7 +21,7 @@ int main()
   ifstream infile;
   int width; int height;
   string filename;
-  cout << "Enter filename : \"filename.txt\" to gather information: ";
+  cout << "Enter filename : \"filename.size\" to gather information: ";
   cin  >> filename;
   infile.open(filename.c_str());
 
@@ -34,12 +34,14 @@ int main()
   infile >> width;
   infile >> height;
   cout << "[WIDTH] : " << width << " [HEIGHT] : " << height << endl;
-  int module [linecount(filename)];
-  int data; int n;
-  while(infile >> data)
+  int modulew [linecount(filename)];  int moduleh [linecount(filename)];
+
+  int w; int h; int n;
+  while(infile >> w >> h)
   {
-    module[n] = data;
-    cout << "MODULE [" << n << "] : " << data;
+    modulew[n] = w;
+    moduleh[n] = h;
+    cout << "MODULE [" << n << "] : " << w << " " << h;
     n++;
     cout << endl;
   }
