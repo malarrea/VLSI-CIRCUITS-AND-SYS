@@ -1,8 +1,25 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cctype>
 using namespace std;
 
+void open (string filename)
+{
+  ifstream infile;
+  infile.open(filename.c_str());
+  if(infile.fail())
+  {
+    cout << "Error Opening file!" << endl;
+    exit(-1);
+  }
+  else
+  {
+    cout << "SUCCESSFULLY OPENED" << endl;
+
+  }
+
+}
 int linecount (string filename)
 {
   int count = 0;  string lines;
@@ -16,64 +33,42 @@ int linecount (string filename)
   count - 1;
   return count;
 }
-
-int main()
+string obtain (string filename, string collect[], string &initial)
 {
-  ifstream infile;
-  string filename;
-  cout << "Enter filename : \"filename.pe\" to gather information: ";
-  cin  >> filename;
-  infile.open(filename.c_str());
-
-  if(infile.fail())
-  {
-    cout << "Error Opening file!" << endl;
-    exit(-1);
-  }
-  string initial;
-  getline(infile,initial);
-
-  // cout << "START : " << initial << endl;
-  string array[linecount(filename)-1]; int iterator = 0;
-  while (infile.good())
+  ifstream input;
+  input.open(filename.c_str());
+  getline(input,initial);
+  //cout << "START : " << initial;
+  int iterator = 0;
+  while (input.good()) //infile.good()
   {
     string capture;
-    getline(infile,capture);
-    array[iterator] = capture;
+    getline(input,capture);
+    collect[iterator] = capture;
+    //cout <<"captured : " << iterator << endl;
     iterator++;
 
   }
-  // for (int x = 0; x < linecount(filename) - 1;  x++)
-  // {
-  //   cout << "x : " << x << " -> " << array[x] << endl;
-  // }
+  input.close();
+}
+void print (string array[], int size)
+{
+  for (int x = 0; x < size; x++)
+  {
+    cout << array[x] << endl;
+  }
+}
 
-  // INDICAtOR OF MOVES
-  // for (int x = 0; x < linecount(filename) - 1; x++)
-  // {
-  //   string line;
-  //   line = array[x];
-  //   char indicator = line[0];
-  //   if (indicator == '-')
-  //   {
-  //     cout << "MOVE 1 or MOVE 2" << endl;
-  //   }
-  //   else
-  //   {
-  //     cout << "MOVE 3 " << endl;
-  //   }
-  //
-  // }
-
-//  REMEMEBR!!!
-// ▪ Move 1 (Operand swap): Swap two adjacent operands.
-// ▪ Move 2 (Chain invert): Complement a chain (V→H, H→V)
-// ▪ Move 3 (Operator/operand swap): Swap two adjacent operand and
-// operator.
-// --------------------------------------------------------------------
-
-
-
+int main()
+{
+  string filename;
+  cout << "Enter filename : \"filename.pe\" to gather information: ";
+  cin  >> filename;
+  open(filename);
+  string initial;
+  string collect[linecount(filename)-1];
+  obtain(filename,collect,initial);
+  //print(collect,linecount(filename)-1);
 
   return 0;
 }
