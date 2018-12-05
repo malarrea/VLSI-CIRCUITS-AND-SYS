@@ -31,12 +31,12 @@ int main()
     exit(-1);
   }
 
-  infile >> width;
-  infile >> height;
-  cout << "[WIDTH] : " << width << " [HEIGHT] : " << height << endl;
+  //infile >> width;
+  //infile >> height;
+  //cout << "[WIDTH] : " << width << " [HEIGHT] : " << height << endl;
   int modulew [linecount(filename)];  int moduleh [linecount(filename)];
 
-  int w; int h; int n;
+  int w; int h; int n = 1;
   while(infile >> w >> h)
   {
     modulew[n] = w;
