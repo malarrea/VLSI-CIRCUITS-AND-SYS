@@ -11,18 +11,6 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
 {
   //(B A, B A)
   int B1; int A1; int B2; int A2;
-  cout << "\tRIGHT :\t{";
-  for (int x = 0; x < pV.size(); x++)
-  {
-      for (int z = 0; z <nV.size(); z++)
-      {
-        // INITIAL START OF SP
-        // if (pV[x] == mn && nV[z] == mn && x == 0 && z == nV.size()-1)
-        // {
-        //   cout << "NULL";
-        // }
-      }
-  }
   // num modules or size of vector
   int nummod = 8;
   for (int x =0; x < nummod; x++)
@@ -30,26 +18,23 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
     if (pV[x] == mn)
     {
       B1 = x;
+      cout << "LOCATION OF mn is on PV = " << x << endl;
     }
     if (nV[x] == mn)
     {
       B2 = x;
-    }
+      cout << "LOCATION OF mn is on NV = " << x << endl;
 
-  }
-  int count = 0;
-  while ( !(count > nummod))
-  {
-    bool once = false;
-    for (int x = 0; x < nummod; x++)
-    {
-      if ((B1 < x) && (B2 < x) && once == false)
-      {
-        cout << x << " is right of : MN (" << mn << ")";
-        once = true;
-      }
     }
-    count++;
+  }
+  cout << "\tRIGHT :\t{";
+
+  for (int x = 0; x < nummod; x++)
+  {
+    if (((x > B1) && (x > B2) )&& x != pV[x])
+    {
+      cout << pV[x] << " ";
+    }
   }
 
 
