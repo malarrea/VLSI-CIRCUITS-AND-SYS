@@ -1,0 +1,4 @@
+C:\Users\Logan\Desktop\VLSI DESIGN\L&H\VLSI PROJECT\stringtest.cpp: In function 'int main()':
+C:\Users\Logan\Desktop\VLSI DESIGN\L&H\VLSI PROJECT\stringtest.cpp:42:11: error: expected ';' before 'cout'
+           cout << evaluate.top() << " ";
+           ^
