@@ -6,9 +6,7 @@
 #include <vector>
 using namespace std;
 
-
-
-void ROF(vector<int> pV, int &mn, vector<int> nV)
+void ROF (vector<int> pV, int &mn, vector<int> nV, vector<int> &collect)
 {
   //  [A]   [A]
   //(B X, B X)
@@ -28,32 +26,17 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
       //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
-  cout << "\tRIGHT :\t{ ";
+  //cout << "\tRIGHT :\t{ ";
   for (int B = 0; B < nummod; B++)
   {
-    // if ((B > NA || B > PA) && B != NA && B != PA)
-    // {
-    //   table.push_back(pV[B]);
-    //   table.push_back(nV[B]);
-    // }
     if ((B > NA))
     {
-      //cout << "NV : " << nV[B] << endl;
       table.push_back(nV[B]);
     }
     if ((B > PA))
     {
-      //cout << "PV : " << pV[B] << endl;
       table.push_back(pV[B]);
     }
-
-
-
-
-
-
-
-
   }
 
   for(int i = 0; i < table.size(); i++)
@@ -62,14 +45,15 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
    {
     if (table[i] == table[j])
     {
-      cout << table[j] << " ";
+      //cout << table[j] << " ";
+      collect.push_back(table[i]);
     }
    }
   }
-  cout << "}";
+//  cout << "}";
 }
 
-void LOF(vector<int> pV, int &mn, vector<int> nV)
+void LOF(vector<int> pV, int &mn, vector<int> nV, vector<int> &collect)
 {
   // [A]   [A]
   // (X  B, X  B)
@@ -87,7 +71,7 @@ void LOF(vector<int> pV, int &mn, vector<int> nV)
       NA = x;
     }
   }
-  cout << "\tLEFT :\t{ ";
+//  cout << "\tLEFT :\t{ ";
   for (int B = 0; B < nummod; B++)
   {
     if ((B < NA))
@@ -109,14 +93,17 @@ void LOF(vector<int> pV, int &mn, vector<int> nV)
    {
     if (table[i] == table[j])
     {
-      cout << table[j] << " ";
+    //  cout << table[j] << " ";
+    collect.push_back(table[i]);
+
     }
    }
   }
-  cout << "}";
+//  cout << "}";
+
 }
 
-void AOF(vector<int> pV, int &mn, vector<int> nV)
+void AOF(vector<int> pV, int &mn, vector<int> nV,vector<int> &collect)
 {
   // [A]      [A]
   // (X  B, B  X)
@@ -134,7 +121,7 @@ void AOF(vector<int> pV, int &mn, vector<int> nV)
       NA = x;
     }
   }
-  cout << "\tABOVE :\t{ ";
+  //cout << "\tABOVE :\t{ ";
   for (int B = 0; B < nummod; B++)
   {
     if ((B > NA))
@@ -155,14 +142,17 @@ void AOF(vector<int> pV, int &mn, vector<int> nV)
    {
     if (table[i] == table[j])
     {
-      cout << table[j] << " ";
+    //  cout << table[j] << " ";
+    collect.push_back(table[i]);
+
     }
    }
   }
-  cout << "}";
+//  cout << "}";
+
 }
 
-void BOF(vector<int> pV, int &mn, vector<int> nV)
+void BOF(vector<int> pV, int &mn, vector<int> nV,vector<int> &collect)
 {
   //    [A] [A]
   // (B  X , X  B)
@@ -183,7 +173,7 @@ void BOF(vector<int> pV, int &mn, vector<int> nV)
     }
   }
 
-  cout << "\tBELOW :\t{ ";
+//  cout << "\tBELOW :\t{ ";
   for (int B = 0; B < nummod; B++)
   {
 
@@ -205,11 +195,14 @@ void BOF(vector<int> pV, int &mn, vector<int> nV)
    {
     if (table[i] == table[j])
     {
-      cout << table[j] << " ";
+      collect.push_back(table[i]);
+
+    //  cout << table[j] << " ";
     }
    }
   }
-  cout << "}";
+//  cout << "}";
+
 }
 
 
@@ -221,9 +214,7 @@ int main()
 	vector<int> test1;
   vector<int>evaluate1;
   vector<int>evaluate2;
-
   bool start = false; bool flip = true;
-
   // WE NEED TO USE POST EXPRESSION STRATEGY
 	for (int position = 0; position < test.size(); position++)
   {
@@ -258,16 +249,31 @@ int main()
   }
 
     int modules = 8;
-    // use reference on parameter mn
-    for (int x = 1; x <= modules; x++)
+    vector<int> collect1;
+    vector<int> collect2;
+    vector<int> collect3;
+    vector<int> collect4;
+
+    int right[modules][modules];
+    int left [modules][modules];
+    int above[modules][modules];
+    int below[modules][modules];
+
+    int x = 2;
+
+    cout << endl;
+    ROF(evaluate1,x,evaluate2,collect1);
+    for (int x = 0; x < collect1.size(); x ++)
     {
-      cout << "MODULE [" << x << "] " << endl;
-      ROF(evaluate1,x,evaluate2);
-      LOF(evaluate1,x,evaluate2);
-      AOF(evaluate1,x,evaluate2);
-      BOF(evaluate1,x,evaluate2);
-      cout << endl; cout << endl;
+      cout << collect1[x] << " ";
     }
+    cout << endl;
+        // mod[x][z] = ROF(evaluate1,x,evaluate2);
+        // mod[x][z] = LOF(evaluate1,x,evaluate2);
+        // mod[x][z] = AOF(evaluate1,x,evaluate2);
+        // mod[x][z] = BOF(evaluate1,x,evaluate2);
+        //cout << endl; cout << endl;
+
 
 
   return 0;
