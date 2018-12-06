@@ -11,7 +11,6 @@ class Graph
 {
     int V; // No. of vertices in graph
     vector<int> *adj; // Pointer to an array containing adjacency lists
-
     // A recursive function used by printAllPaths()
     void printAllPathsUtil(int , int , bool [], int [], int &);
 
@@ -41,7 +40,6 @@ void Graph::printAllPaths(int s, int d)
     // Create an array to store paths
     int *path = new int[V];
     int path_index = 0; // Initialize path[] as empty
-
     // Initialize all vertices as not visited
     for (int i = 0; i < V; i++)
         visited[i] = false;
@@ -58,6 +56,7 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
                             int path[], int &path_index)
 {
     // Mark the current node and store it in path[]
+    int sum;
     visited[u] = true;
     path[path_index] = u;
     path_index++;
@@ -67,9 +66,17 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
     if (u == d)
     {
         for (int i = 0; i<path_index; i++)
-            cout << path[i] << " ";
-        cout << endl;
+        {
+          //  cout << path[i] << " ";
+            sum += path[i];
 
+        }
+
+        sum = sum - 3;
+
+        cout << "SUM OF : " << sum << endl;
+
+        cout << endl;
     }
     else // If current vertex is not destination
     {
@@ -284,12 +291,86 @@ void BOF(vector<int> pV, int &mn, vector<int> nV,vector<int> &collect)
 
 }
 
+int linecount (string filename)
+{
+  int count = 0;  string lines;
+  ifstream input;
+  input.open(filename.c_str());
+  while (std::getline(input,lines))
+    {
+      ++count;
+    }
+  input.close();
+  count - 1;
+  return count;
+}
 
+string obtain (string filename, string collect[])
+{
+  ifstream input;
+  input.open(filename.c_str());
+  //cout << "START : " << initial;
+  int iterator = 0;
+  while (input.good()) //infile.good()
+  {
+    string capture;
+    getline(input,capture);
+    collect[iterator] = capture;
+    //cout <<"captured : " << iterator << endl;
+    iterator++;
+
+  }
+  input.close();
+}
 
 
 int main()
 {
-  string test = "+1 7 4 5 2 6 3 8 -8 4 7 2 5 3 6 1\0";
+  ifstream infile;
+  int width; int height;
+  string filename;
+  cout << "Enter filename : \"filename.size\" to gather information: ";
+  cin  >> filename;
+  infile.open(filename.c_str());
+
+  if(infile.fail())
+  {
+    cout << "Error Opening file!" << endl;
+    exit(-1);
+  }
+  ifstream file;
+  string filename2;
+  cout << "Enter filename : \"filename.sp\" to gather information: ";
+  cin  >> filename2;
+  file.open(filename2.c_str());
+
+  if(file.fail())
+  {
+    cout << "Error Opening file!" << endl;
+    exit(-1);
+  }
+
+  //infile >> width;
+  //infile >> height;
+  //cout << "[WIDTH] : " << width << " [HEIGHT] : " << height << endl;
+  int modulew [linecount(filename)];  int moduleh [linecount(filename)];
+
+  int w; int h; int n = 1;
+  while(infile >> w >> h)
+  {
+    modulew[n] = w;
+    moduleh[n] = h;
+    cout << "MODULE [" << n << "] : " << w << " " << h;
+    n++;
+    cout << endl;
+  }
+  string collect[linecount(filename2)-1];
+  obtain(filename,collect);
+
+  for (int q = 0; q <= linecount(filename2) - 1; q++)
+{
+  //string test = "+1 7 4 5 2 6 3 8 -8 4 7 2 5 3 6 1\0";
+  string test = collect[q];
 	vector<int> test1;
   vector<int>evaluate1;
   vector<int>evaluate2;
@@ -334,29 +415,16 @@ int main()
     vector<int> collect3;
     vector<int> collect4;
     Graph g(modules + 2);
-    int s = 1000;
-    int t = 1001;
+    int s = 1;
+    int t = 2;
 
     for (int x = 1; x <= modules; x++)
     {
       //cout << "MODULE [ " << x << "] : " << endl;
       ROF(evaluate1,x,evaluate2,collect1);
       LOF(evaluate1,x,evaluate2,collect2);
-      //AOF(evaluate1,x,evaluate2,collect3);
-      // BOF(evaluate1,x,evaluate2,collect4);
-
-
-
-
-
-
-
-
-
-
-
-
-
+      AOF(evaluate1,x,evaluate2,collect3);
+      BOF(evaluate1,x,evaluate2,collect4);
 
 
       if (collect1.empty())
@@ -368,16 +436,12 @@ int main()
       {
         while(!collect1.empty())
         {
-          cout << "CONNECTED" << endl;
+          //cout << "CONNECTED" << endl;
           g.addEdge(collect1.back(),x);
           collect1.pop_back();
         }
       }
       collect1.clear();
-
-
-
-
 
 
       if (collect2.empty())
@@ -387,7 +451,42 @@ int main()
       }
       collect2.clear();
 
+
+
+
+
+
+      if (collect3.empty())
+      {
+        //cout << "CONNECTED" << endl;
+        g.addEdge(x,t);
+      }
+      collect3.clear();
+
+
+
+      if (collect4.empty())
+      {
+        //cout << "CONNECTED" << endl;
+        g.addEdge(s,x);
+      }
+      else
+      {
+        while(!collect4.empty())
+        {
+          //cout << "CONNECTED" << endl;
+          g.addEdge(collect4.back(),x);
+          collect4.pop_back();
+        }
+      }
+      collect4.clear();
+
     }
+    g.printAllPaths(s,t);
+
+}
+
+
 
   return 0;
 }
