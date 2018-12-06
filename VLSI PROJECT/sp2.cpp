@@ -482,11 +482,13 @@ int main()
       collect4.clear();
 
     }
-    g.printAllPaths(s,t);
+    //g.printAllPaths(s,t);
 
 }
-
-
+for(int k = 1; k < modules; k++
+    {
+	cout << "Module: " << k << " Width: " << modulew[k] << " Height: " << moduleh[k] << " Location: " << /*g.printAllPaths(s,k)*/ << endl;
+    }
 
   return 0;
 }
