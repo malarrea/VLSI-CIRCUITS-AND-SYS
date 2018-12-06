@@ -7,33 +7,47 @@
 using namespace std;
 
 
+
 void ROF(vector<int> pV, int &mn, vector<int> nV)
 {
-  //(B A, B A)
-  int B1; int A1; int B2; int A2;
-  // num modules or size of vector
+  //  [A]   [A]
+  //(B X, B X)
+  int PA;int NA;
+  string compare1; string compare2;
+  vector<int>table;
   int nummod = 8;
   for (int x =0; x < nummod; x++)
   {
     if (pV[x] == mn)
     {
-      B1 = x;
+      PA = x;
       //cout << "LOCATION OF mn is on PV = " << x << endl;
     }
     if (nV[x] == mn)
     {
-      B2 = x;
+      NA = x;
       //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
   cout << "\tRIGHT :\t{ ";
-  for (int x = 0; x < nummod; x++)
+  for (int B = 0; B < nummod; B++)
   {
-    if ( ((x > B1) && (x > B2)) && x != pV[x])
+    if ((B > NA || B > PA) && B != NA && B != PA)
     {
-       cout << pV[x] << " ";
+      table.push_back(pV[B]);
+      table.push_back(nV[B]);
     }
+  }
 
+  for(int i = 0; i < table.size(); i++)
+  {
+   for ( int j=i+1; j < table.size() ; j++ )
+   {
+    if (table[i] == table[j])
+    {
+      cout << table[j] << " ";
+    }
+   }
   }
   cout << "}";
 }
@@ -179,16 +193,17 @@ int main()
 
     int modules = 8;
     // use reference on parameter mn
-    for (int x = 1; x <= modules; x++)
-    {
+    // for (int x = 1; x <= modules; x++)
+    // {
+    int x = 2;
       cout << "MODULE [" << x << "] " << endl;
       ROF(evaluate1,x,evaluate2);
-      LOF(evaluate1,x,evaluate2);
-      AOF(evaluate1,x,evaluate2);
-      BOF(evaluate1,x,evaluate2);
-
-      cout << endl; cout << endl;
-    }
+      //LOF(evaluate1,x,evaluate2);
+      //AOF(evaluate1,x,evaluate2);
+      //BOF(evaluate1,x,evaluate2);
+    //
+    //   cout << endl; cout << endl;
+    // }
 
 
   return 0;
