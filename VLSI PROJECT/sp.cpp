@@ -18,106 +18,116 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
     if (pV[x] == mn)
     {
       B1 = x;
-      cout << "LOCATION OF mn is on PV = " << x << endl;
+      //cout << "LOCATION OF mn is on PV = " << x << endl;
     }
     if (nV[x] == mn)
     {
       B2 = x;
-      cout << "LOCATION OF mn is on NV = " << x << endl;
-
+      //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
-  cout << "\tRIGHT :\t{";
-
+  cout << "\tRIGHT :\t{ ";
   for (int x = 0; x < nummod; x++)
   {
-    if (((x > B1) && (x > B2) )&& x != pV[x])
+    if ( ((x > B1) && (x > B2)) && x != pV[x])
     {
-      cout << pV[x] << " ";
+       cout << pV[x] << " ";
     }
+
   }
-
-
-
-
-
   cout << "}";
-
 }
-
-
-
 
 void LOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  cout << "\tLEFT :\t{";
-
-  for (int x = 0; x < pV.size(); x++)
+  // AB, AB
+  int B1; int A1; int B2; int A2;
+  // num modules or size of vector
+  int nummod = 8;
+  for (int x =0; x < nummod; x++)
   {
-    for (int z = 0; z <nV.size(); z++)
+    if (pV[x] == mn)
     {
-      // INITIAL START OF SP
-      if (pV[x] == mn && nV[z] == mn && x == 0 && z == nV.size()-1)
-      {
-        cout << "NULL";
-      }
-
+      B1 = x;
+      //cout << "LOCATION OF mn is on PV = " << x << endl;
+    }
+    if (nV[x] == mn)
+    {
+      B2 = x;
+      //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
+  cout << "\tLEFT :\t{ ";
+  for (int x = 0; x < nummod; x++)
+  {
+    if ( ((x < B1) && (x < B2)) && x != pV[x])
+    {
+       cout << pV[x] << " ";
+    }
 
-
+  }
   cout << "}";
 }
 
 void AOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  cout << "\tABOVE :\t{";
-  for (int x = 0; x < pV.size(); x++)
+  // AB BA
+  int B1; int A1; int B2; int A2;
+  // num modules or size of vector
+  int nummod = 8;
+  for (int x =0; x < nummod; x++)
   {
-    for (int z = 0; z <nV.size(); z++)
+    if (pV[x] == mn)
     {
-      // INITIAL START OF SP
-      if (pV[x] == mn && nV[z] == mn && x == 0 && z == nV.size()-1)
-      {
-        cout << "NULL";
-      }
-
+      B1 = x;
+      //cout << "LOCATION OF mn is on PV = " << x << endl;
+    }
+    if (nV[x] == mn)
+    {
+      B2 = x;
+      //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
+  cout << "\tABOVE :\t{ ";
+  for (int x = 0; x < nummod; x++)
+  {
+    if ( ((x < B1) && (x > B2)) && x != pV[x])
+    {
+       cout << pV[x] << " ";
+    }
 
-
-
+  }
   cout << "}";
-
 }
 
 void BOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  cout << "\tBELOW :\t{";
-  bool topmost = false;
-  for (int x = 0; x < pV.size(); x++)
+  // AB BA
+  int B1; int A1; int B2; int A2;
+  // num modules or size of vector
+  int nummod = 8;
+  for (int x =0; x < nummod; x++)
   {
-    for (int z = 0; z <nV.size(); z++)
+    if (pV[x] == mn)
     {
-      // INITIAL START OF SP
-      if (pV[x] == mn && nV[z] == mn && x == 0 && z == nV.size()-1)
-      {
-          topmost = true;
-      }
-
-
+      B1 = x;
+      //cout << "LOCATION OF mn is on PV = " << x << endl;
     }
-    if (topmost == true && pV[x] != mn)
+    if (nV[x] == mn)
     {
-      cout << pV[x] << " ";
+      B2 = x;
+      //cout << "LOCATION OF mn is on NV = " << x << endl;
     }
   }
+  cout << "\tBELOW :\t{ ";
+  for (int x = 0; x < nummod; x++)
+  {
+    if ( ((B1 < x) && (B2 > x)) && x != pV[x])
+    {
+       cout << pV[x] << " ";
+    }
 
-
-
-
-
-
+  }
   cout << "}";
 
 }
@@ -167,23 +177,15 @@ int main()
     }
   }
 
-  // for(int i=0; i<evaluate1.size(); ++i)
-  // {
-  //   cout << evaluate1[i] << ' ';
-  // }
-  // for(int i=0; i<evaluate2.size(); ++i)
-  // {
-  //   cout << evaluate2[i] << ' ';
-  // }
     int modules = 8;
     // use reference on parameter mn
     for (int x = 1; x <= modules; x++)
     {
       cout << "MODULE [" << x << "] " << endl;
       ROF(evaluate1,x,evaluate2);
-      // LOF(evaluate1,x,evaluate2);
-      // AOF(evaluate1,x,evaluate2);
-      // BOF(evaluate1,x,evaluate2);
+      LOF(evaluate1,x,evaluate2);
+      AOF(evaluate1,x,evaluate2);
+      BOF(evaluate1,x,evaluate2);
 
       cout << endl; cout << endl;
     }
