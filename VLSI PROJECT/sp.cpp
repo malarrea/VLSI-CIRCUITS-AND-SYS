@@ -13,7 +13,6 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
   //  [A]   [A]
   //(B X, B X)
   int PA;int NA;
-  string compare1; string compare2;
   vector<int>table;
   int nummod = 8;
   for (int x =0; x < nummod; x++)
@@ -32,11 +31,29 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
   cout << "\tRIGHT :\t{ ";
   for (int B = 0; B < nummod; B++)
   {
-    if ((B > NA || B > PA) && B != NA && B != PA)
+    // if ((B > NA || B > PA) && B != NA && B != PA)
+    // {
+    //   table.push_back(pV[B]);
+    //   table.push_back(nV[B]);
+    // }
+    if ((B > NA))
     {
-      table.push_back(pV[B]);
+      //cout << "NV : " << nV[B] << endl;
       table.push_back(nV[B]);
     }
+    if ((B > PA))
+    {
+      //cout << "PV : " << pV[B] << endl;
+      table.push_back(pV[B]);
+    }
+
+
+
+
+
+
+
+
   }
 
   for(int i = 0; i < table.size(); i++)
@@ -54,96 +71,145 @@ void ROF(vector<int> pV, int &mn, vector<int> nV)
 
 void LOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  // AB, AB
-  int B1; int A1; int B2; int A2;
-  // num modules or size of vector
+  // [A]   [A]
+  // (X  B, X  B)
+  int PA;int NA;
+  vector<int>table;
   int nummod = 8;
   for (int x =0; x < nummod; x++)
   {
     if (pV[x] == mn)
     {
-      B1 = x;
-      //cout << "LOCATION OF mn is on PV = " << x << endl;
+      PA = x;
     }
     if (nV[x] == mn)
     {
-      B2 = x;
-      //cout << "LOCATION OF mn is on NV = " << x << endl;
+      NA = x;
     }
   }
   cout << "\tLEFT :\t{ ";
-  for (int x = 0; x < nummod; x++)
+  for (int B = 0; B < nummod; B++)
   {
-    if ( ((x < B1) && (x < B2)) && x != pV[x])
+    if ((B < NA))
     {
-       cout << pV[x] << " ";
+      //cout << "NV : " << nV[B] << endl;
+      table.push_back(nV[B]);
+    }
+    if ((B < PA))
+    {
+      //cout << "PV : " << pV[B] << endl;
+      table.push_back(pV[B]);
     }
 
+  }
+
+  for(int i = 0; i < table.size(); i++)
+  {
+   for ( int j=i+1; j < table.size() ; j++ )
+   {
+    if (table[i] == table[j])
+    {
+      cout << table[j] << " ";
+    }
+   }
   }
   cout << "}";
 }
 
 void AOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  // AB BA
-  int B1; int A1; int B2; int A2;
-  // num modules or size of vector
+  // [A]      [A]
+  // (X  B, B  X)
+  int PA;int NA;
+  vector<int>table;
   int nummod = 8;
   for (int x =0; x < nummod; x++)
   {
     if (pV[x] == mn)
     {
-      B1 = x;
-      //cout << "LOCATION OF mn is on PV = " << x << endl;
+      PA = x;
     }
     if (nV[x] == mn)
     {
-      B2 = x;
-      //cout << "LOCATION OF mn is on NV = " << x << endl;
+      NA = x;
     }
   }
   cout << "\tABOVE :\t{ ";
-  for (int x = 0; x < nummod; x++)
+  for (int B = 0; B < nummod; B++)
   {
-    if ( ((x < B1) && (x > B2)) && x != pV[x])
+    if ((B > NA))
     {
-       cout << pV[x] << " ";
+      //cout << "NV : " << nV[B] << endl;
+      table.push_back(nV[B]);
     }
+    if ((B < PA))
+    {
+      //cout << "PV : " << pV[B] << endl;
+      table.push_back(pV[B]);
+    }
+  }
 
+  for(int i = 0; i < table.size(); i++)
+  {
+   for ( int j=i+1; j < table.size() ; j++ )
+   {
+    if (table[i] == table[j])
+    {
+      cout << table[j] << " ";
+    }
+   }
   }
   cout << "}";
 }
 
 void BOF(vector<int> pV, int &mn, vector<int> nV)
 {
-  // AB BA
-  int B1; int A1; int B2; int A2;
-  // num modules or size of vector
+  //    [A] [A]
+  // (B  X , X  B)
+
+  int PA; int NA;
+  vector<int>table;
+
   int nummod = 8;
-  for (int x =0; x < nummod; x++)
+  for (int x = 0; x < nummod; x++)
   {
     if (pV[x] == mn)
     {
-      B1 = x;
-      //cout << "LOCATION OF mn is on PV = " << x << endl;
+      PA = x;
     }
     if (nV[x] == mn)
     {
-      B2 = x;
-      //cout << "LOCATION OF mn is on NV = " << x << endl;
+      NA = x;
     }
   }
-  cout << "\tBELOW :\t{ ";
-  for (int x = 0; x < nummod; x++)
-  {
-    if ( ((B1 < x) && (B2 > x)) && x != pV[x])
-    {
-       cout << pV[x] << " ";
-    }
 
+  cout << "\tBELOW :\t{ ";
+  for (int B = 0; B < nummod; B++)
+  {
+
+    if ((B < NA))
+    {
+      //cout << "NV : " << nV[B] << endl;
+      table.push_back(nV[B]);
+    }
+    if ((B > PA))
+    {
+      //cout << "PV : " << pV[B] << endl;
+      table.push_back(pV[B]);
+    }
+  }
+
+  for(int i = 0; i < table.size(); i++)
+  {
+   for ( int j=i+1; j < table.size() ; j++ )
+   {
+    if (table[i] == table[j])
+    {
+      cout << table[j] << " ";
+    }
+   }
   }
   cout << "}";
-
 }
 
 
@@ -193,17 +259,15 @@ int main()
 
     int modules = 8;
     // use reference on parameter mn
-    // for (int x = 1; x <= modules; x++)
-    // {
-    int x = 2;
+    for (int x = 1; x <= modules; x++)
+    {
       cout << "MODULE [" << x << "] " << endl;
       ROF(evaluate1,x,evaluate2);
-      //LOF(evaluate1,x,evaluate2);
-      //AOF(evaluate1,x,evaluate2);
-      //BOF(evaluate1,x,evaluate2);
-    //
-    //   cout << endl; cout << endl;
-    // }
+      LOF(evaluate1,x,evaluate2);
+      AOF(evaluate1,x,evaluate2);
+      BOF(evaluate1,x,evaluate2);
+      cout << endl; cout << endl;
+    }
 
 
   return 0;
